@@ -6,13 +6,13 @@
 #    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/10 15:51:41 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/10 16:00:15 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # Variables
 
-NAME 		= 	fractol.a
+NAME 		= 	fractol
 INCLUDE 	= 	include
 CC 			= 	gcc
 CFLAGS 		= 	-Wall -Werror -Wextra -I
@@ -50,11 +50,11 @@ $(NAME): $(OBJ)
 	@make -C $(LIBFT_DIR)
 	@cp libft/libft.a .
 	@mv libft.a $(NAME)
-	ar rcs $(NAME) $(OBJ)
-	@echo "$(GREEN)ft_printf compiled!$(DEF_COLOR)"
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(INCLUDE)
+	@echo "$(GREEN)fractol compiled!$(DEF_COLOR)"
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
 
 $(OBJF):
 	@mkdir -p $(OBJ_DIR)
@@ -65,16 +65,16 @@ libft:
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_DIR)
-	@echo "$(BLUE)ft_printf object files cleaned!$(DEF_COLOR)"
+	@echo "$(BLUE)fractol object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
 	@rm -f $(NAME)
 	@make fclean -C $(LIBFT_DIR)
-	@echo "$(CYAN)ft_printf executable files cleaned!$(DEF_COLOR)"
+	@echo "$(CYAN)fractol executable files cleaned!$(DEF_COLOR)"
 	@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 
 re: fclean all
-	@echo "$(GREEN)Cleaned and rebuilt everything for ft_printf!$(DEF_COLOR)"
+	@echo "$(GREEN)Cleaned and rebuilt everything for fractol!$(DEF_COLOR)"
 
 so: $(OBJ)
 	$(CC) -nostartfiles -fPIC $(CFLAGS) -I$(LIBFT_DIR) -c $(SRC)
