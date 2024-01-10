@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/10 13:20:49 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:57:11 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	mandelbrot(t_complex c)
 
 	n = 0;
 	z = c;
-	while (abs_complex(z) < 2 && n < 100)
+	while (abs_complex(z) <= 2 && n < 100)
 	{
 		z = add_complex(square_complex(z), c);
 		n++;
@@ -52,7 +52,7 @@ int	mandelbrot(t_complex c)
 // we apply the formula above with x_max, y_max = 2 and x_min, y_min = -2,
 // this formula will give to our real and imag values the proportionally equal
 // values in that scale.
-void	paint_whole_window(t_img *img, int width, int length)
+void	paint_img(t_img *img, int width, int length)
 {
 	int				x;
 	int				y;
@@ -64,13 +64,23 @@ void	paint_whole_window(t_img *img, int width, int length)
 	while (y++ < length - 1)
 	{
 		x = -1;
+		printf(" ");
 		while (x++ < width - 1)
 		{
 			c.real = x * 4 / (width - 1) - 2;
 			c.imag = y * 4 / (length - 1) - 2;
 			n = mandelbrot(c);
-			my_mlx_pixel_put(img, x, y, 0xFFFFFFFF + n);
+			printf("%d ", n);
+			if (n == 100)
+				my_mlx_pixel_put(img, x, y, 0xFF000000);
+			else if (n == 2)
+				my_mlx_pixel_put(img, x, y, 0x00FF0000);
+			else if (n == 1)
+				my_mlx_pixel_put(img, x, y, 0x0000FF00);
+			else if (n == 0)
+				my_mlx_pixel_put(img, x, y, 0xFFFFFFFF);
 		}
+		printf("\n");
 	}
 }
 
@@ -82,11 +92,11 @@ int	main(void)
 	t_render	render;
 
 	render.mlx = mlx_init();
-	render.win = mlx_new_window(render.mlx, 800, 800, "Hello world!");
-	img.img = mlx_new_image(render.mlx, 800, 800);
+	render.win = mlx_new_window(render.mlx, 1600, 1200, "Hello world!");
+	img.img = mlx_new_image(render.mlx, 1600, 1200);
 	img.addr = mlx_get_data_addr(
 			img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	paint_whole_window(&img, 800, 800);
+	paint_img(&img, 1600, 1200);
 	mlx_put_image_to_window(render.mlx, render.win, img.img, 0, 0);
 	mlx_hook(render.win, 2, 1L << 0, close, &render);
 	mlx_hook(render.win, 17, 1L << 1, close_exit, &render);
