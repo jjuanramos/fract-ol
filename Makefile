@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/11 10:20:07 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/11 10:47:23 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,14 +28,14 @@ LIBFT_NAME	= libft.a
 LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
 
 # Includes
-INC			=	-I ./include/\
+INC			=	-I ./includes/\
 				-I ./libft/\
 				-I ./minilibx-linux/
 
 # Sources
 
 SRC_DIR 	= 	src/
-SRC_FILES 	= 	fractol
+SRC_FILES 	= 	main complex
 SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
 # Objects

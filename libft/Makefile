@@ -6,14 +6,13 @@
 #    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2023/12/07 10:59:15 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/11 10:45:59 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 CC = gcc
-INCLUDE = ../include
-CFLAGS = -Wall -Werror -Wextra -I
+CFLAGS = -Wall -Werror -Wextra
 SRC = ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c \
 	ft_isprint.c ft_toupper.c ft_tolower.c ft_strlen.c \
 	ft_atoi.c ft_strlcpy.c ft_strlcat.c ft_strchr.c \

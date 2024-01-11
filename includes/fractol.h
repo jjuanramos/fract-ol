@@ -3,20 +3,28 @@
 /*                                                        :::      ::::::::   */
 /*   fractol.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
+/*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/10 13:14:53 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:40:04 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-# include <stdlib.h>
 # include <stdio.h>
 # include <mlx.h>
 # include <math.h>
+# include "libft.h"
+
+/*	Dimensions	*/
+# define WIDTH 800
+# define HEIGHT 800
+# define MAX_ITERATIONS 100
+
+/*  Fractal sets	*/
+# define MANDELBROT 1
 
 typedef struct s_img {
 	void	*img;
