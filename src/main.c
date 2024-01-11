@@ -6,16 +6,16 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/11 10:43:29 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/11 10:51:35 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	close(int keycode, t_render *render)
+int	custom_close(int keycode, t_render *render)
 {
 	mlx_destroy_window(render->mlx, render->win);
-	return (0);
+	return (keycode);
 }
 
 int	close_exit(t_render *render)
@@ -58,19 +58,18 @@ void	paint_img(t_img *img, int width, int length)
 	int				y;
 	t_complex		c;
 	int				n;
-	unsigned int	color;
 
 	y = -1;
 	while (y++ < length - 1)
 	{
 		x = -1;
-		printf(" ");
+		// printf(" ");
 		while (x++ < width - 1)
 		{
 			c.real = x * 4 / (width - 1) - 2;
 			c.imag = y * 4 / (length - 1) - 2;
 			n = mandelbrot(c);
-			printf("%d ", n);
+			// printf("%d ", n);
 			if (n == 100)
 				my_mlx_pixel_put(img, x, y, 0xFF000000);
 			else if (n == 2)
@@ -80,14 +79,12 @@ void	paint_img(t_img *img, int width, int length)
 			else if (n == 0)
 				my_mlx_pixel_put(img, x, y, 0xFFFFFFFF);
 		}
-		printf("\n");
+		// printf("\n");
 	}
 }
 
 int	main(void)
 {
-	void		*mlx;
-	void		*mlx_win;
 	t_img		img;
 	t_render	render;
 
@@ -98,7 +95,7 @@ int	main(void)
 			img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	paint_img(&img, WIDTH, HEIGHT);
 	mlx_put_image_to_window(render.mlx, render.win, img.img, 0, 0);
-	mlx_hook(render.win, 2, 1L << 0, close, &render);
+	mlx_hook(render.win, 2, 1L << 0, custom_close, &render);
 	mlx_hook(render.win, 17, 1L << 1, close_exit, &render);
 	mlx_loop(render.mlx);
 }
