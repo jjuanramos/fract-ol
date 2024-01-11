@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/11 10:40:04 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/11 14:00:44 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,26 +26,30 @@
 /*  Fractal sets	*/
 # define MANDELBROT 1
 
-typedef struct s_img {
+/* 
+	Main struct: fractol. Contains:
+	- img: struct returned by MLX. Used to store images (sets of pixels).
+	- mlx: struct returned by MLX. Used to manage the library.
+	- win: struct returned by MLX. Used to manage the window created by MLX.
+	- set: type of fractal.
+	- min_r: minimum real value given for the set.
+	- max_r: maximum real value given for the set.
+	- min_i: minimum imaginary value given for the set.
+	- max_i: maximum imaginary value given for the set.
+	- addr: address that represents the beginning of the memory area where the image is stored.
+*/
+typedef struct s_fractol {
 	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}			t_img;
-
-typedef struct s_render {
 	void	*mlx;
 	void	*win;
-}			t_render;
+	int		set;
+	int		min_r;
+	int		max_r;
+	int		min_i;
+	int		max_i;
+	char	*addr;
+}	t_fractol;
 
-typedef struct s_complex {
-	double	real;
-	double	imag;
-}			t_complex;
-
-double		abs_complex(t_complex c);
-t_complex	add_complex(t_complex a, t_complex b);
-t_complex	square_complex(t_complex c);
+void	init_f(t_fractol *f);
 
 #endif
