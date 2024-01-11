@@ -3,24 +3,45 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
+#    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/10 16:00:15 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/11 10:20:07 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-# Variables
-
+# Name
 NAME 		= 	fractol
-INCLUDE 	= 	include
+
+# Compiler
 CC 			= 	gcc
-CFLAGS 		= 	-Wall -Werror -Wextra -I
+CFLAGS 		= 	-Wall -Werror -Wextra
+
+# Minilibx
+MLX_PATH	= minilibx-linux/
+MLX_NAME	= libmlx.a
+MLX			= $(MLX_PATH)$(MLX_NAME)
+
+# Libft
+LIBFT_PATH	= libft/
+LIBFT_NAME	= libft.a
+LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
+
+# Includes
+INC			=	-I ./include/\
+				-I ./libft/\
+				-I ./minilibx-linux/
+
+# Sources
+
 SRC_DIR 	= 	src/
+SRC_FILES 	= 	fractol
+SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
+
+# Objects
+
 OBJ_DIR 	= 	obj/
-LIBFT_DIR 	= 	libft
-MAKEFLAGS 	+=	 --no-print-directory
-.SILENT:
+OBJ 		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 # Colors
 
@@ -34,42 +55,46 @@ MAGENTA 	=	\033[0;95m
 CYAN 		= 	\033[0;96m
 WHITE 		= 	\033[0;97m
 
-# Sources
+# Config
 
-SRC_FILES 	= 	main complex
-
-SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
-OBJ 		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 OBJF 		=	.cache_exists
+MAKEFLAGS 	+=	 --no-print-directory
+.SILENT:
 
 ###
 
-all: $(NAME)
-
-$(NAME): $(OBJ)
-	@make -C $(LIBFT_DIR)
-	@cp libft/libft.a .
-	@mv libft.a $(NAME)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(INCLUDE)
-	@echo "$(GREEN)fractol compiled!$(DEF_COLOR)"
+all: $(MLX) $(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
-	@$(CC) $(CFLAGS) -I $(INCLUDE) -c $< -o $@
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
 
 $(OBJF):
 	@mkdir -p $(OBJ_DIR)
 
+$(MLX):
+	@echo "Making MiniLibX..."
+	@make -sC $(MLX_PATH)
+
+$(LIBFT):
+	@echo "Making libft..."
+	@make -sC $(LIBFT_PATH)
+
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
+	@echo "$(GREEN)fractol compiled!$(DEF_COLOR)"
+
 libft:
-	@make -C $(LIBFT_DIR)
+	@make -sC $(LIBFT_PATH)
 
 clean:
 	@rm -rf $(OBJ_DIR)
-	@make clean -C $(LIBFT_DIR)
+	@make clean -C $(LIBFT_PATH)
+	@make clean -C $(MLX_PATH)
 	@echo "$(BLUE)fractol object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
 	@rm -f $(NAME)
-	@make fclean -C $(LIBFT_DIR)
+	@make fclean -C $(LIBFT_PATH)
 	@echo "$(CYAN)fractol executable files cleaned!$(DEF_COLOR)"
 	@echo "$(CYAN)libft executable files cleaned!$(DEF_COLOR)"
 
