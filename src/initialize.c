@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/11 14:03:27 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:32:20 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	init_img(t_fractol *f)
 		ft_putstr_fd(
 			"Initialization of win failed. Exiting programme.\n",
 			2);
-		exit(0);
+		exit(1);
 	}
 	f->addr = mlx_get_data_addr(f->img, &bits_per_pixel, &line_length, &endian);
 }
@@ -37,7 +37,7 @@ void	init_f(t_fractol *f)
 		ft_putstr_fd(
 			"Initialization of mlx failed. Exiting programme.\n",
 			2);
-		exit(0);
+		exit(1);
 	}
 	f->win = mlx_new_window(f->mlx, WIDTH, HEIGHT, "fractol");
 	if (!f->win)
@@ -45,7 +45,7 @@ void	init_f(t_fractol *f)
 		ft_putstr_fd(
 			"Initialization of win failed. Exiting programme.\n",
 			2);
-		exit(0);
+		exit(1);
 	}
 	init_img(f);
 	f->min_r = -4;
