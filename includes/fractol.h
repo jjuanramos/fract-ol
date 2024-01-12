@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 11:06:53 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:24:53 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,13 @@ typedef struct s_fractol {
 	char	*addr;
 }	t_fractol;
 
+
+/*	Initializations	*/
 void	init_f(t_fractol *f);
+
+/*	Utils	*/
 int		clean_close(t_fractol *f);
 int		clean_exit(t_fractol *f, int exit_code);
 int		msg(char *str, int errno);
+
 #endif
