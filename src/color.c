@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 14:04:54 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 16:36:33 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,20 +46,24 @@ void	set_palette(t_fractol *f, int alt_color)
 	int		j;
 	double	fraction;
 
-	i = -1;
+	i = 0;
 	baseline_color = 0x000000;
-	f->palette = ft_calloc(MAX_ITERATIONS, sizeof(int));
+	f->palette = ft_calloc(MAX_ITERATIONS + 1, sizeof(int));
 	if (!f->palette)
 		clean_exit(f, msg("Initialization of palette failed.\n", 1));
-	while (++i < MAX_ITERATIONS)
+	while (i < MAX_ITERATIONS)
 	{
-		j = -1;
-		while (++j < MAX_ITERATIONS)
+		j = 0;
+		while (j < MAX_ITERATIONS / 2)
 		{
-			fraction = (double)j / MAX_ITERATIONS;
+			fraction = (double)j / (MAX_ITERATIONS / 2);
 			f->palette[i + j] = interpolate(
 					baseline_color, alt_color, fraction);
+			j++;
 		}
+		baseline_color = alt_color;
+		alt_color = 0xFFFFFF;
+		i += j;
 	}
 	f->palette[MAX_ITERATIONS -1] = 0;
 }
