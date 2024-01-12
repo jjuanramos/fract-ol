@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 11:07:51 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 12:45:10 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,5 @@ void	init_f(t_fractol *f)
 	f->max_r = 4;
 	f->min_i = -4;
 	f->max_i = 4;
+	set_palette(f, 0x00FF00);
 }

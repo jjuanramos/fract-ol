@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/12 11:00:43 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/12 14:03:06 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,7 +35,7 @@ INC			=	-I ./includes/\
 # Sources
 
 SRC_DIR 	= 	src/
-SRC_FILES 	= 	fractol initialize utils
+SRC_FILES 	= 	fractol initialize utils color render sets
 SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
 # Objects

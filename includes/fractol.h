@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 11:24:53 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 14:06:24 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@
 /*  Fractal sets	*/
 # define MANDELBROT 1
 
-/* 
-	Main struct: fractol. Contains:
+/* t_fractol:
 	- mlx: struct returned by MLX. Used to manage the library.
 	- img: struct returned by MLX. Used to store images (sets of pixels).
 	- win: struct returned by MLX. Used to manage the window created by MLX.
@@ -39,6 +38,7 @@
 	- addr: memory address where the pixel data of the image is stored.
 		The image uses a 32-bit per pixel format, where each pixel is
 		represented by four consecutive bytes (4 bytes = 32 bits).
+	- palette: color palette that goes from a variable color to black (0x000000).
 */
 typedef struct s_fractol {
 	void	*mlx;
@@ -50,6 +50,7 @@ typedef struct s_fractol {
 	int		min_i;
 	int		max_i;
 	char	*addr;
+	int		*palette;
 }	t_fractol;
 
 
@@ -60,5 +61,14 @@ void	init_f(t_fractol *f);
 int		clean_close(t_fractol *f);
 int		clean_exit(t_fractol *f, int exit_code);
 int		msg(char *str, int errno);
+
+/*	Render	*/
+void	render(t_fractol *f);
+
+/*	Color	*/
+void	set_palette(t_fractol *f, int alt_color);
+
+/*	Sets */
+int		mandelbrot(double pr, double pi);
 
 #endif

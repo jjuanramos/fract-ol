@@ -1,22 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fractol.c                                          :+:      :+:    :+:   */
+/*   sets.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 12:43:03 by juramos          ###   ########.fr       */
+/*   Created: 2024/01/12 13:54:09 by juramos           #+#    #+#             */
+/*   Updated: 2024/01/12 14:05:58 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int	main(void)
+int	mandelbrot(double pr, double pi)
 {
-	t_fractol	f;
+	double	z;
+	double	cr;
+	double	ci;
+	double	temp_i;
+	int		n;
 
-	init_f(&f);
-	render(&f);
-	exit(0);
+	cr = pr;
+	ci = pi;
+	n = -1;
+	while (++n < MAX_ITERATIONS)
+	{
+		z = pr * pr + pi * pi;
+		if (z > 4)
+			break ;
+		temp_i = 2 * pr * pi + ci;
+		pr = (pr * pr - pi * pi) + cr;
+		pi = temp_i;
+	}
+	return (n);
 }
