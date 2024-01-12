@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/11 14:00:44 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:21:10 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,9 @@
 	- max_r: maximum real value given for the set.
 	- min_i: minimum imaginary value given for the set.
 	- max_i: maximum imaginary value given for the set.
-	- addr: address that represents the beginning of the memory area where the image is stored.
+	- addr: memory address where the pixel data of the image is stored.
+		The image uses a 32-bit per pixel format, where each pixel is
+		represented by four consecutive bytes (4 bytes = 32 bits).
 */
 typedef struct s_fractol {
 	void	*img;

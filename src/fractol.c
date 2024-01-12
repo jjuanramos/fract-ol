@@ -6,16 +6,29 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/11 14:04:07 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 10:19:31 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-/*
-	Current purpose: Open a window with a basic set of pixels.
+/* set_pixel_color:
+	Add a color to one pixel of the MLX image map.
+	The MLX image is composed of 32 bits per pixel.
+	Color ints are stored from right to left, here, and are in
+	the form of 0xAARRGGBB. 8 bits encode each color component,
+	Alpha (Transparency), Red, Green and Blue.
+	Bit shifting:
+		- BB >> 0   (0x000000BB)
+		- GG >> 8   (0x0000GG00)
+		- RR >> 16  (0x00RR0000)
+		- AA >> 24  (0xAA000000)
+	The image uses a 32-bit per pixel format,
+	where each pixel's color is represented by a 32-bit integer
+	in the form of 0xAARRGGBB.
+	We extract each component of the color from the bit value (color)
+	and assign it to each byte of (x, y).
 */
-
 static void	set_pixel_color(t_fractol *f, int x, int y, int color)
 {
 	f->addr[x * 4 + y * WIDTH * 4] = color;
