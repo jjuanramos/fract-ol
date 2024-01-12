@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 10:21:10 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:06:53 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@
 
 /* 
 	Main struct: fractol. Contains:
-	- img: struct returned by MLX. Used to store images (sets of pixels).
 	- mlx: struct returned by MLX. Used to manage the library.
+	- img: struct returned by MLX. Used to store images (sets of pixels).
 	- win: struct returned by MLX. Used to manage the window created by MLX.
 	- set: type of fractal.
 	- min_r: minimum real value given for the set.
@@ -41,8 +41,8 @@
 		represented by four consecutive bytes (4 bytes = 32 bits).
 */
 typedef struct s_fractol {
-	void	*img;
 	void	*mlx;
+	void	*img;
 	void	*win;
 	int		set;
 	int		min_r;
@@ -53,5 +53,7 @@ typedef struct s_fractol {
 }	t_fractol;
 
 void	init_f(t_fractol *f);
-
+int		clean_close(t_fractol *f);
+int		clean_exit(t_fractol *f, int exit_code);
+int		msg(char *str, int errno);
 #endif

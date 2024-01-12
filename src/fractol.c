@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 10:32:34 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 11:00:39 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static void	set_pixel_color(t_fractol *f, int x, int y, int color)
 	f->addr[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
 }
 
-static void	render(t_fractol *f)
+void	render(t_fractol *f)
 {
 	int			x;
 	int			y;
@@ -56,6 +56,7 @@ static void	render(t_fractol *f)
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
+	mlx_hook(f->win, 17, 1L << 3, clean_close, f);
 	mlx_loop(f->mlx);
 }
 
