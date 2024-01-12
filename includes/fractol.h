@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 14:06:24 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 17:26:54 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,9 @@
 /*  Fractal sets	*/
 # define MANDELBROT 1
 
+/*	Buttons	*/
+# define CLOSE_BUTTON 17
+
 /* t_fractol:
 	- mlx: struct returned by MLX. Used to manage the library.
 	- img: struct returned by MLX. Used to store images (sets of pixels).
@@ -38,6 +41,8 @@
 	- addr: memory address where the pixel data of the image is stored.
 		The image uses a 32-bit per pixel format, where each pixel is
 		represented by four consecutive bytes (4 bytes = 32 bits).
+	- default_color: the color that we paint the set with if an alternative isn't
+		provided.
 	- palette: color palette that goes from a variable color to black (0x000000).
 */
 typedef struct s_fractol {
@@ -50,6 +55,7 @@ typedef struct s_fractol {
 	int		min_i;
 	int		max_i;
 	char	*addr;
+	int		default_color;
 	int		*palette;
 }	t_fractol;
 

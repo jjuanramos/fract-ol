@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:42:32 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 14:06:07 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/12 17:21:42 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ void	render(t_fractol *f)
 	double		pr;
 	double		pi;
 
+	mlx_clear_window(f->mlx, f->win);
 	y = -1;
 	while (++y < HEIGHT)
 	{
@@ -58,6 +59,4 @@ void	render(t_fractol *f)
 		}
 	}
 	mlx_put_image_to_window(f->mlx, f->win, f->img, 0, 0);
-	mlx_hook(f->win, 17, 1L << 3, clean_close, f);
-	mlx_loop(f->mlx);
 }
