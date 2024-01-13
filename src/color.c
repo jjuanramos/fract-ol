@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/13 12:17:49 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/13 12:33:46 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	set_palette(t_fractol *f, int alt_color)
 
 	i = 0;
 	baseline_color = 0x000000;
-	f->palette = ft_calloc(MAX_ITERATIONS + 1, sizeof(int));
+	f->palette = ft_calloc(MAX_ITERATIONS, sizeof(int));
 	if (!f->palette)
 		clean_exit(f, msg("Initialization of palette failed.\n", 1));
 	while (i < MAX_ITERATIONS)
