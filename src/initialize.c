@@ -6,12 +6,16 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 17:26:11 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/13 11:45:15 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* init_img:
+	takes a t_fractol struct with initialized window and initializes
+	an img on it.
+*/
 static void	init_img(t_fractol *f)
 {
 	int	bits_per_pixel;
@@ -24,6 +28,9 @@ static void	init_img(t_fractol *f)
 	f->addr = mlx_get_data_addr(f->img, &bits_per_pixel, &line_length, &endian);
 }
 
+/* init_f:
+	initializes an empty t_fractol with the basic settings.
+*/
 void	init_f(t_fractol *f)
 {
 	f->mlx = mlx_init();

@@ -6,12 +6,18 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 13:54:09 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 14:05:58 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/13 11:48:45 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+/* mandelbrot:
+	calculates the mandelbrot set for each complex number
+	z formed by the real part pr and the imaginary, pi.
+	Returns how stable the given z is, the closer it is to
+	MAX_ITERATIONS, the more stable it is.
+*/
 int	mandelbrot(double pr, double pi)
 {
 	double	z;

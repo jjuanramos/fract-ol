@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/12 14:03:06 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/13 11:32:59 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,15 +17,15 @@ NAME 		= 	fractol
 CC 			= 	gcc
 CFLAGS 		= 	-Wall -Werror -Wextra
 
-# Minilibx
-MLX_PATH	= minilibx-linux/
-MLX_NAME	= libmlx.a
-MLX			= $(MLX_PATH)$(MLX_NAME)
+# MiniLibX
+MLX_PATH	= 	minilibx-linux/
+MLX_NAME	= 	libmlx.a
+MLX			= 	$(MLX_PATH)$(MLX_NAME)
 
 # Libft
-LIBFT_PATH	= libft/
-LIBFT_NAME	= libft.a
-LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
+LIBFT_PATH	= 	libft/
+LIBFT_NAME	= 	libft.a
+LIBFT		= 	$(LIBFT_PATH)$(LIBFT_NAME)
 
 # Includes
 INC			=	-I ./includes/\
@@ -33,18 +33,15 @@ INC			=	-I ./includes/\
 				-I ./minilibx-linux/
 
 # Sources
-
 SRC_DIR 	= 	src/
 SRC_FILES 	= 	fractol initialize utils color render sets
 SRC 		=	$(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 
 # Objects
-
 OBJ_DIR 	= 	obj/
 OBJ 		=	$(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 
 # Colors
-
 DEF_COLOR 	= 	\033[0;39m
 GRAY 		= 	\033[0;90m
 RED 		= 	\033[0;91m
@@ -56,9 +53,8 @@ CYAN 		= 	\033[0;96m
 WHITE 		= 	\033[0;97m
 
 # Config
-
 OBJF 		=	.cache_exists
-MAKEFLAGS 	+=	 --no-print-directory
+MAKEFLAGS 	+=	--no-print-directory
 .SILENT:
 
 ###

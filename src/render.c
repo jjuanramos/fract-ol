@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:42:32 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/12 17:21:42 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/13 11:47:33 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,14 @@ static void	set_pixel_color(t_fractol *f, int x, int y, int color)
 	f->addr[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
 }
 
+/* render:
+	takes a t_fractol struct and:
+	1. clears out any possible image in the existing window.
+	2. executes the corresponding set with the given values, to obtain the
+		color palette depending on how stable the values are in relation to the ref.
+	3. Gives each pixel of the image an specific color.
+	4. Renders the image in the window again, with the new colors set.
+*/
 void	render(t_fractol *f)
 {
 	int			x;
