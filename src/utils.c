@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:37:13 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/13 12:32:50 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:45:01 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,24 @@ int	msg(char *str, int errno)
 {
 	ft_putstr_fd(str, 2);
 	return (errno);
+}
+
+
+void	print_controls(void)
+{
+	ft_putendl_fd("===============  Fract`ol  ===============", 1);
+	ft_putendl_fd("fractals available:", 1);
+	ft_putendl_fd("\tM - Mandelbrot", 1);
+	ft_putendl_fd("\tJ - Julia", 1);
+}
+
+char	parse_set(char **str)
+{
+	if (str[1][0] != 'M' && str[1][0] != 'J')
+	{
+		print_controls();
+		return ('\0');
+	}
+	else
+		return (str[1][0]);
 }

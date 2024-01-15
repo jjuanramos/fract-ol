@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 11:23:04 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:38:42 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 
 /*  Fractal sets	*/
 # define MANDELBROT 1
+# define JULIA 2
 
 /*	Buttons & Keys	*/
 # define CLOSE_BUTTON 17
@@ -84,14 +85,15 @@ typedef struct s_fractol {
 
 
 /*	Initializations	*/
-void	init_f(t_fractol *f);
+void	init_f(t_fractol *f, char **args);
 void	reinit_f(t_fractol *f);
 
 /*	Utils	*/
 int		clean_close(t_fractol *f);
 int		clean_exit(t_fractol *f, int exit_code);
 int		msg(char *str, int errno);
-void	print_values(t_fractol *f);
+void	print_controls(void);
+char	parse_set(char **str);
 
 /*	Render	*/
 void	render(t_fractol *f);

@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 09:59:17 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 12:50:32 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,36 @@ static void	init_img(t_fractol *f)
 	f->addr = mlx_get_data_addr(f->img, &bits_per_pixel, &line_length, &endian);
 }
 
+static void	init_fractal(t_fractol *f, char set)
+{
+	if (set == 'M')
+	{
+		f->set = MANDELBROT;
+		f->min_r = -2;
+		f->max_r = 2;
+		f->max_i = -2;
+		f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
+	}
+	else if (set == 'J')
+	{
+		f->set = JULIA;
+		clean_exit(f, msg("Julia not ready yet.\n", 1));
+	}
+	else
+		clean_exit(f, msg(
+				"Unexpected set received. Exiting the programme.\n", 1));
+}
+
 /* init_f:
 	initializes an empty t_fractol with the basic settings.
 */
-void	init_f(t_fractol *f)
+void	init_f(t_fractol *f, char **args)
 {
+	char	set;
+
+	set = parse_set(args);
+	if (!set)
+		clean_exit(f, msg("\n", 1));
 	f->mlx = mlx_init();
 	if (!f->mlx)
 		clean_exit(f, msg("Initialization of mlx failed.\n", 1));
@@ -40,18 +65,23 @@ void	init_f(t_fractol *f)
 	if (!f->win)
 		clean_exit(f, msg("Initialization of win failed.\n", 1));
 	init_img(f);
-	f->min_r = -2;
-	f->max_r = 2;
-	f->max_i = -2;
-	f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
+	init_fractal(f, set);
 	f->default_color = 0xFFFF00;
 	set_palette(f, f->default_color);
 }
 
 void	reinit_f(t_fractol *f)
 {
-	f->min_r = -2;
-	f->max_r = 2;
-	f->max_i = -2;
-	f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
+	if (f->set == MANDELBROT)
+	{
+		f->min_r = -2;
+		f->max_r = 2;
+		f->max_i = -2;
+		f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
+	}
+	else if (f->set == JULIA)
+		clean_exit(f, msg("Julia not ready yet.\n", 1));
+	else
+		clean_exit(f, msg(
+				"Unexpected error. Exiting the programme.\n", 1));
 }
