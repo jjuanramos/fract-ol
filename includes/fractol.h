@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 09:58:00 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 10:48:15 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,10 +73,10 @@ typedef struct s_fractol {
 	void	*img;
 	void	*win;
 	int		set;
-	int		min_r;
-	int		max_r;
-	int		min_i;
-	int		max_i;
+	double	min_r;
+	double	max_r;
+	double	min_i;
+	double	max_i;
 	char	*addr;
 	int		default_color;
 	int		*palette;
@@ -91,6 +91,7 @@ void	reinit_f(t_fractol *f);
 int		clean_close(t_fractol *f);
 int		clean_exit(t_fractol *f, int exit_code);
 int		msg(char *str, int errno);
+void	print_values(t_fractol *f);
 
 /*	Render	*/
 void	render(t_fractol *f);
