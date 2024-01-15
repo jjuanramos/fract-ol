@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:30:48 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 09:58:49 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:22:46 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,30 @@ static void	move(t_fractol *f, char dir, double dist)
 		f->min_i += center_i * dist;
 		f->max_i += center_i * dist;
 	}
+}
+
+int	mouse_event(int keycode, int x, int y, t_fractol *f)
+{
+	if (keycode == MOUSE_WHEEL_UP)
+	{
+		zoom(f, 0.5);
+		x -= WIDTH / 2;
+		y -= HEIGHT / 2;
+		if (x < 0)
+			move(f, (double)x * -1 / WIDTH, 'L');
+		else if (x > 0)
+			move(f, (double)x / WIDTH, 'R');
+		if (y < 0)
+			move(f, (double)y * -1 / HEIGHT, 'U');
+		else if (y > 0)
+			move (f, (double)y / HEIGHT, 'D');
+	}
+	else if (keycode == MOUSE_WHEEL_DOWN)
+		zoom(f, 2);
+	else
+		return (0);
+	render(f);
+	return (0);
 }
 
 int	key_event(int keycode, t_fractol *f)
