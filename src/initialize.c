@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/13 11:45:15 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/15 09:59:17 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,4 +46,12 @@ void	init_f(t_fractol *f)
 	f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
 	f->default_color = 0xFFFF00;
 	set_palette(f, f->default_color);
+}
+
+void	reinit_f(t_fractol *f)
+{
+	f->min_r = -2;
+	f->max_r = 2;
+	f->max_i = -2;
+	f->min_i = f->max_i + (f->max_r - f->min_r) * HEIGHT / WIDTH;
 }
