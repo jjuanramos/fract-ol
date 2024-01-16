@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:28:24 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 12:49:27 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 13:29:03 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int	ft_isspace(int c)
 	return (0);
 }
 
-static const char	*remove_whitespaces(const char *str)
+static char	*remove_whitespaces(char *str)
 {
 	int	pos;
 
@@ -31,18 +31,28 @@ static const char	*remove_whitespaces(const char *str)
 	return (&str[pos]);
 }
 
-static	void	move_to_right(char **str, int *pos, int *sign)
+static	void	move_to_right(char **str, int *pos, double *sign)
 {
 	if (*str[0] == '+')
-		*pos++;
+		(*pos)++;
 	else if (*str[0] == '-')
 	{
 		*sign *= -1.0;
-		*pos++;
+		(*pos)++;
 	}
 }
 
-double	ft_atod(const char *str)
+static double	pow_zero(int size)
+{
+	double	result;
+
+	result = 0.1;
+	while (size != 0 && --size)
+		result *= 0.1;
+	return (result);
+}
+
+double	ft_atod(char *str)
 {
 	double	sign;
 	double	num;
@@ -57,6 +67,12 @@ double	ft_atod(const char *str)
 	{
 		if (ft_isdigit(str[pos]))
 			num = num * 10.0 + (str[pos] - 48);
+		else if (str[pos] == '.')
+		{
+			pos++;
+			num += (ft_atod(&str[pos]) * pow_zero((ft_strlen(str) - pos)));
+			return (num * sign);
+		}
 		else
 			return (num * sign);
 		pos++;
