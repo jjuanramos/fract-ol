@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:42:32 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 09:44:39 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:09:15 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,19 @@ static void	set_pixel_color(t_fractol *f, int x, int y, int color)
 	f->addr[x * 4 + y * WIDTH * 4 + 3] = color >> 24;
 }
 
+static int	get_n_from_set(t_fractol *f, double pr, double pi)
+{
+	if (f->set == MANDELBROT)
+		return (mandelbrot(pr, pi));
+	else if (f->set == JULIA)
+		return (julia(f, pr, pi));
+	else
+	{
+		clean_exit(f, msg("Unexpected fractal set. exiting now.\n", 1));
+		return (0);
+	}
+}
+
 /* render:
 	takes a t_fractol struct and:
 	1. clears out any possible image in the existing window.
@@ -62,7 +75,7 @@ void	render(t_fractol *f)
 		{
 			pr = f->min_r + (double)x * (f->max_r - f->min_r) / WIDTH;
 			pi = f->max_i + (double)y * (f->min_i - f-> max_i) / HEIGHT;
-			color_iter = mandelbrot(pr, pi);
+			color_iter = get_n_from_set(f, pr, pi);
 			set_pixel_color(f, x, y, f->palette[color_iter]);
 		}
 	}

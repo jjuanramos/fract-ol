@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:37:13 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 12:45:01 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 10:13:35 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,18 +59,17 @@ int	msg(char *str, int errno)
 void	print_controls(void)
 {
 	ft_putendl_fd("===============  Fract`ol  ===============", 1);
-	ft_putendl_fd("fractals available:", 1);
+	ft_putendl_fd("Fractals available:", 1);
 	ft_putendl_fd("\tM - Mandelbrot", 1);
 	ft_putendl_fd("\tJ - Julia", 1);
+	ft_putendl_fd("Controls:", 1);
+	ft_putendl_fd("\tUse the arrows to move around the window", 1);
+	ft_putendl_fd("\tUse the W and D or the mouse to zoom in and out", 1);
+	ft_putendl_fd("\tUse the spacebar to go back to the default zoom", 1);
 }
 
-char	parse_set(char **str)
+int	print_and_exit(int errno)
 {
-	if (str[1][0] != 'M' && str[1][0] != 'J')
-	{
-		print_controls();
-		return ('\0');
-	}
-	else
-		return (str[1][0]);
+	print_controls();
+	exit(errno);
 }

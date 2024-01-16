@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 12:38:42 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:07:38 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,9 +65,11 @@
 	- addr: memory address where the pixel data of the image is stored.
 		The image uses a 32-bit per pixel format, where each pixel is
 		represented by four consecutive bytes (4 bytes = 32 bits).
-	- default_color: the color that we paint the set with if an alternative isn't
+	- color: the color that we paint the set with if an alternative isn't
 		provided.
 	- palette: color palette that goes from a variable color to black (0x000000).
+	- kr: constant real value used for the Julia set.
+	- ki: constant imaginary value used for the Julia set.
 */
 typedef struct s_fractol {
 	void	*mlx;
@@ -79,13 +81,15 @@ typedef struct s_fractol {
 	double	min_i;
 	double	max_i;
 	char	*addr;
-	int		default_color;
+	int		color;
 	int		*palette;
+	double	kr;
+	double	ki;
 }	t_fractol;
 
 
 /*	Initializations	*/
-void	init_f(t_fractol *f, char **args);
+void	init_f(t_fractol *f);
 void	reinit_f(t_fractol *f);
 
 /*	Utils	*/
@@ -93,7 +97,7 @@ int		clean_close(t_fractol *f);
 int		clean_exit(t_fractol *f, int exit_code);
 int		msg(char *str, int errno);
 void	print_controls(void);
-char	parse_set(char **str);
+int		print_and_exit(int errno);
 
 /*	Render	*/
 void	render(t_fractol *f);
@@ -103,9 +107,13 @@ void	set_palette(t_fractol *f, int alt_color);
 
 /*	Sets */
 int		mandelbrot(double pr, double pi);
+int		julia(t_fractol *f, double pr, double pi);
 
 /*	Events	*/
 int		key_event(int keycode, t_fractol *f);
 int		mouse_event(int keycode, int x, int y, t_fractol *f);
+
+/*	Args	*/
+void	handle_args(t_fractol *f, int argc, char **argv);
 
 #endif

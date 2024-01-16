@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 12:33:59 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 09:57:09 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	main(int argc, char **argv)
 		print_controls();
 		exit(0);
 	}
-	init_f(&f, argv);
+	handle_args(&f, argc, argv);
+	init_f(&f);
 	render(&f);
 	mlx_hook(f.win, CLOSE_BUTTON, 0, clean_close, &f);
 	mlx_key_hook(f.win, key_event, &f);
