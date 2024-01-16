@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:28:24 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 10:49:47 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 12:49:27 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,17 @@ static const char	*remove_whitespaces(const char *str)
 	return (&str[pos]);
 }
 
+static	void	move_to_right(char **str, int *pos, int *sign)
+{
+	if (*str[0] == '+')
+		*pos++;
+	else if (*str[0] == '-')
+	{
+		*sign *= -1.0;
+		*pos++;
+	}
+}
+
 double	ft_atod(const char *str)
 {
 	double	sign;
@@ -41,13 +52,7 @@ double	ft_atod(const char *str)
 	pos = 0;
 	num = 0.0;
 	sign = 1.0;
-	if (str[0] == '+')
-		pos++;
-	else if (str[0] == '-')
-	{
-		sign *= -1.0;
-		pos++;
-	}
+	move_to_right(&str, &pos, &sign);
 	while (str[pos] != '\0')
 	{
 		if (ft_isdigit(str[pos]))
