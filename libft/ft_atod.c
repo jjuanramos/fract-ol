@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:28:24 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 13:29:03 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 17:29:28 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ double	ft_atod(char *str)
 			return (num * sign);
 		}
 		else
-			return (num * sign);
+			return (42);
 		pos++;
 	}
 	return (num * sign);
