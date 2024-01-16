@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/15 12:50:32 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/16 09:39:52 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	init_f(t_fractol *f, char **args)
 
 	set = parse_set(args);
 	if (!set)
-		clean_exit(f, msg("\n", 1));
+		exit(msg("\n", 1));
 	f->mlx = mlx_init();
 	if (!f->mlx)
 		clean_exit(f, msg("Initialization of mlx failed.\n", 1));
