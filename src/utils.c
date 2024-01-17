@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:37:13 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 10:13:35 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:30:54 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,12 @@ void	print_controls(void)
 	ft_putendl_fd("Fractals available:", 1);
 	ft_putendl_fd("\tM - Mandelbrot", 1);
 	ft_putendl_fd("\tJ - Julia", 1);
+	ft_putendl_fd("\tYou can customize the color after setting the Fractal", 1);
+	ft_putendl_fd("\t\tExample: ./fractol M 0xFFFFFF", 1);
+	ft_putendl_fd("\tYou can customize the params of the Julia set", 1);
+	ft_putendl_fd("\t\tExample: ./fractol J -0.7 -0.3", 1);
+	ft_putendl_fd("\tYou can also custom the Julia set color, such as", 1);
+	ft_putendl_fd("\t\tExample: ./fractol J -0.7 -0.3 0xFF0000", 1);
 	ft_putendl_fd("Controls:", 1);
 	ft_putendl_fd("\tUse the arrows to move around the window", 1);
 	ft_putendl_fd("\tUse the W and D or the mouse to zoom in and out", 1);
