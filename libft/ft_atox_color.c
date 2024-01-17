@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:14:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 11:25:42 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:08:07 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,15 +24,20 @@ static int	ft_isspace(int c)
 static char	*remove_whitespaces_0x(char *str)
 {
 	int	pos;
+	int	times;
 
 	pos = 0;
+	times = 0;
 	while (ft_isspace(str[pos])
-		|| (str[pos] == '0'))
+		|| (str[pos] == '0' && times == 0))
 	{
 		if ((str[pos] == '0'))
 		{
 			if (str[pos + 1] && str[pos + 1 == 'x'])
+			{
 				pos += 2;
+				times++;
+			}
 			else
 				return (NULL);
 		}
