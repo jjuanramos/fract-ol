@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:56:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 11:39:15 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:44:54 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	parse_set(t_fractol *f, char **str)
 {
 	char	set;
 
-	if (str[1][0] != 'M' && str[1][0] != 'J')
+	if (str[1][0] != 'M' && str[1][0] != 'J' && str[1][0] != 'T')
 		print_and_exit(1);
 	else
 		set = str[1][0];
@@ -24,6 +24,8 @@ static void	parse_set(t_fractol *f, char **str)
 		f->set = MANDELBROT;
 	else if (set == 'J')
 		f->set = JULIA;
+	else if (set == 'T')
+		f->set = TRICORN;
 }
 
 static void	get_color(t_fractol *f, int argc, char **argv)
@@ -64,7 +66,8 @@ static void	get_params(t_fractol *f, int argc, char **argv)
 void	handle_args(t_fractol *f, int argc, char **argv)
 {
 	parse_set(f, argv);
-	if ((f->set == MANDELBROT && argc > 3) || (f->set == JULIA && argc > 5))
+	if ((f->set == MANDELBROT && argc > 3) || (f->set == JULIA && argc > 5)
+		|| (f->set == TRICORN && argc > 3))
 		print_and_exit(1);
 	get_color(f, argc, argv);
 	get_params(f, argc, argv);

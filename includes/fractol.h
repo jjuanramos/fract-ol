@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 12:07:38 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:47:02 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@
 /*  Fractal sets	*/
 # define MANDELBROT 1
 # define JULIA 2
+# define TRICORN 3
 
 /*	Buttons & Keys	*/
 # define CLOSE_BUTTON 17
@@ -108,6 +109,7 @@ void	set_palette(t_fractol *f, int alt_color);
 /*	Sets */
 int		mandelbrot(double pr, double pi);
 int		julia(t_fractol *f, double pr, double pi);
+int		tricorn(double pr, double pi);
 
 /*	Events	*/
 int		key_event(int keycode, t_fractol *f);

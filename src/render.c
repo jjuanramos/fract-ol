@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:42:32 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 12:09:15 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:45:32 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ static int	get_n_from_set(t_fractol *f, double pr, double pi)
 		return (mandelbrot(pr, pi));
 	else if (f->set == JULIA)
 		return (julia(f, pr, pi));
+	else if (f->set == TRICORN)
+		return (tricorn(pr, pi));
 	else
 	{
 		clean_exit(f, msg("Unexpected fractal set. exiting now.\n", 1));
