@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:56:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 12:18:03 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:25:50 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,13 @@ static void	parse_set(t_fractol *f, char **str)
 
 static void	get_color(t_fractol *f, int argc, char **argv)
 {
-	// if (argc == 3)
-	// 	f->color = argv[2];
-	// else if (f->set == JULIA && argc == 5)
-	// 	f->color = argv[4];
-	// else if (argc == 2 || (f->set == JULIA && argc == 4))
-	if (argc > 0 && argv)
-		f->color = 0xFFFF00;
-	else
+	f->color = 0xFFFF00;
+	if (argc == 3)
+		f->color = ft_atox_color(argv[2]);
+	else if (f->set == JULIA && argc == 5)
+		f->color = ft_atox_color(argv[4]);
+	else if (!(argc == 2 || (f->set == JULIA && argc == 4))
+		|| f->color == -1)
 		print_and_exit(1);
 }
 

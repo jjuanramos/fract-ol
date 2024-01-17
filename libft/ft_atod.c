@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/16 16:28:24 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 17:29:28 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:03:04 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,12 @@ static double	pow_zero(int size)
 	return (result);
 }
 
+/* ft_atod:
+	specifically tailored for fract'ol, that's why it returns
+	42: because it is used to parse julia params, that can't be
+	greater than 2, so when it fails we return a value greater than
+	that one in order to let the program know that it's failed.
+*/
 double	ft_atod(char *str)
 {
 	double	sign;
