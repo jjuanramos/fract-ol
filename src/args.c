@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:56:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 13:03:00 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:09:04 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,28 +26,6 @@ static void	parse_set(t_fractol *f, char **str)
 		f->set = JULIA;
 	else if (set == 'T')
 		f->set = TRICORN;
-}
-
-static void	set_color_range(t_fractol *f, int is_color)
-{
-	int		*colors;
-	int		i;
-
-	colors = (int [6]){0x4C5B5C,
-		0xFF715B, 0xF9CB40, 0xBCED09, 0x2F52E0, 0xFFFFFF};
-	i = -1;
-	f->colors = ft_calloc(7, sizeof(int));
-	if (!is_color)
-	{
-		while (++i < 6)
-			f->colors[i] = colors[i];
-	}
-	else
-	{
-		while (++i < 6)
-			f->colors[i] = interpolate(colors[i], f->color, 3.0 / 6);
-	}
-
 }
 
 static void	get_color(t_fractol *f, int argc, char **argv)
