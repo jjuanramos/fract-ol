@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:14:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 12:08:07 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:22:13 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	ft_atox_color(char	*str)
 	len = 0;
 	num = 0;
 	str = remove_whitespaces_0x(str);
+	if (!str)
+		return (-1);
 	while (str[i] && ft_ishex(str[i]))
 	{
 		if (ft_isdigit(str[i]))
