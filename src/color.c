@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 11:46:58 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:32:20 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 		is the beginning and color2 is the end.
 	3. Puts up the new gradient of colors into one, and returns that.
 */
-static int	interpolate(int color1, int color2, double fraction)
+int	interpolate(int color1, int color2, double fraction)
 {
 	int	start_rgb[3];
 	int	end_rgb[3];

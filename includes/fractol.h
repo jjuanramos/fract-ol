@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 11:56:13 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:02:52 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,9 @@
 	- addr: memory address where the pixel data of the image is stored.
 		The image uses a 32-bit per pixel format, where each pixel is
 		represented by four consecutive bytes (4 bytes = 32 bits).
-	- color: the color that we paint the set with if an alternative isn't
+	- color: the color that we gradient the set with if an alternative isn't
 		provided.
+	- colors: the gradient of colors we use. Always same 6.
 	- palette: color palette that goes from a variable color to black (0x000000).
 	- kr: constant real value used for the Julia set.
 	- ki: constant imaginary value used for the Julia set.
@@ -83,6 +84,7 @@ typedef struct s_fractol {
 	double	max_i;
 	char	*addr;
 	int		color;
+	int		*colors;
 	int		*palette;
 	double	kr;
 	double	ki;
@@ -91,7 +93,7 @@ typedef struct s_fractol {
 
 /*	Initializations	*/
 void	init_f(t_fractol *f);
-void	reinit_f(t_fractol *f);
+void	set_dimensions(t_fractol *f);
 
 /*	Utils	*/
 int		clean_close(t_fractol *f);
@@ -105,6 +107,7 @@ void	render(t_fractol *f);
 
 /*	Color	*/
 void	set_palette(t_fractol *f, int *colors, int n);
+int		interpolate(int color1, int color2, double fraction);
 
 /*	Sets */
 int		mandelbrot(double pr, double pi);

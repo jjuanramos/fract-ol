@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 09:30:48 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 11:51:25 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:02:52 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,7 +95,7 @@ int	key_event(int keycode, t_fractol *f)
 	else if (keycode == KEY_RIGHT)
 		move(f, 'R', 0.2);
 	else if (keycode == KEY_SPACE)
-		reinit_f(f);
+		set_dimensions(f);
 	else
 		return (1);
 	render(f);

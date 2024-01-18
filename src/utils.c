@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:37:13 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 12:46:31 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 12:51:21 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ int	clean_exit(t_fractol *f, int exit_code)
 		exit(exit_code);
 	if (f->palette)
 		free(f->palette);
+	if (f->colors)
+		free(f->colors);
 	if (f->img)
 		mlx_destroy_image(f->mlx, f->img);
 	if (f->win && f->mlx)
