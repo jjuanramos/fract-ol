@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 10:46:05 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:46:58 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,30 +49,29 @@ static int	interpolate(int color1, int color2, double fraction)
 	so, the number of possible colors is equivalent to the number of
 	iterations that the set performs to decide whether the value is stable.
 */
-void	set_palette(t_fractol *f, int alt_color)
+void	set_palette(t_fractol *f, int *colors, int n)
 {
-	int		baseline_color;
+	int		color_pos;
 	int		i;
 	int		j;
 	double	fraction;
 
 	i = 0;
-	baseline_color = 0x000000;
+	color_pos = 0;
 	f->palette = ft_calloc(MAX_ITERATIONS + 1, sizeof(int));
 	if (!f->palette)
 		clean_exit(f, msg("Initialization of palette failed.\n", 1));
 	while (i < MAX_ITERATIONS)
 	{
 		j = 0;
-		while (j < MAX_ITERATIONS / 2)
+		while ((i + j) < MAX_ITERATIONS && j < MAX_ITERATIONS / (n - 1))
 		{
-			fraction = (double)j / (MAX_ITERATIONS / 2);
+			fraction = (double)j / (MAX_ITERATIONS / (n - 1));
 			f->palette[i + j] = interpolate(
-					baseline_color, alt_color, fraction);
+					colors[color_pos], colors[color_pos + 1], fraction);
 			j++;
 		}
-		baseline_color = alt_color;
-		alt_color = 0xFFFFFF;
+		color_pos++;
 		i += j;
 	}
 	f->palette[MAX_ITERATIONS -1] = 0;

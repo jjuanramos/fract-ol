@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/17 12:47:02 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:56:13 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ int		print_and_exit(int errno);
 void	render(t_fractol *f);
 
 /*	Color	*/
-void	set_palette(t_fractol *f, int alt_color);
+void	set_palette(t_fractol *f, int *colors, int n);
 
 /*	Sets */
 int		mandelbrot(double pr, double pi);

@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/16 12:14:41 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/18 11:54:49 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,9 @@ void	init_f(t_fractol *f)
 	if (!f->win)
 		clean_exit(f, msg("Initialization of win failed.\n", 1));
 	init_img(f);
-	set_palette(f, f->color);
+	set_palette(f,
+		(int [6]){0x4C5B5C, 0xFF715B, 0xF9CB40, 0xBCED09, 0x2F52E0, 0xFFFFFF},
+		6);
 }
 
 void	reinit_f(t_fractol *f)
