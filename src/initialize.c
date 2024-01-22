@@ -3,14 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 11:53:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 13:06:47 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:56:32 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
+
+void	clean_init(t_fractol *f)
+{
+	f->mlx = NULL;
+	f->win = NULL;
+	f->img = NULL;
+	f->addr = NULL;
+	f->set = -1;
+	f->min_r = 0;
+	f->max_r = 0;
+	f->min_i = 0;
+	f->max_i = 0;
+	f->kr = 0;
+	f->ki = 0;
+	f->palette = NULL;
+	f->colors = NULL;
+	f->color = 0;
+}
 
 /* init_img:
 	takes a t_fractol struct with initialized window and initializes

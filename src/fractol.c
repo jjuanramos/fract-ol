@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 15:52:50 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 16:56:50 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(int argc, char **argv)
 		print_controls();
 		return (1);
 	}
+	clean_init(&f);
 	handle_args(&f, argc, argv);
 	init_f(&f);
 	render(&f);
