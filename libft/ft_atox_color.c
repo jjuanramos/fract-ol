@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atox_color.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:14:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 12:22:13 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 10:39:52 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static char	*remove_whitespaces_0x(char *str)
 	while (ft_isspace(str[pos])
 		|| (str[pos] == '0' && times == 0))
 	{
-		if ((str[pos] == '0'))
+		if (str[pos] == '0')
 		{
 			if (str[pos + 1] && str[pos + 1 == 'x'])
 			{
