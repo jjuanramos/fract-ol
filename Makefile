@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/22 17:04:39 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/22 17:06:52 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIBFT_NAME	= 	libft.a
 LIBFT		= 	$(LIBFT_PATH)$(LIBFT_NAME)
 
 # Mlx
-MLX_PATH	= 	mlx/
+MLX_PATH	= 	minilibx/
 MLX_NAME	= 	libmlx.a
 MLX			= 	$(MLX_PATH)$(MLX_NAME)
 
