@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 13:11:04 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:23:49 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,5 +96,4 @@ void	set_color_range(t_fractol *f, int is_color)
 		while (++i < 6)
 			f->colors[i] = interpolate(colors[i], f->color, 1.75 / 6);
 	}
-
 }

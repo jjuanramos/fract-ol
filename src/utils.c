@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 10:37:13 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 11:55:48 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:24:14 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,7 @@ int	clean_exit(t_fractol *f, int exit_code)
 	if (f->win && f->mlx)
 		mlx_destroy_window(f->mlx, f->win);
 	if (f->mlx)
-	{
-		// mlx_loop_end(f->mlx);
-		// mlx_destroy_display(f->mlx);
 		free(f->mlx);
-	}
 	exit(exit_code);
 }
 
@@ -56,7 +52,6 @@ int	msg(char *str, int errno)
 	ft_putstr_fd(str, 2);
 	return (errno);
 }
-
 
 void	print_controls(void)
 {

@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 13:10:41 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 12:21:17 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:23:23 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ typedef struct s_fractol {
 	double	kr;
 	double	ki;
 }	t_fractol;
-
 
 /*	Initializations	*/
 void	init_f(t_fractol *f);

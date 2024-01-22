@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:56:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 11:58:36 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 12:23:35 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,3 @@ void	handle_args(t_fractol *f, int argc, char **argv)
 	get_color(f, argc, argv);
 	get_params(f, argc, argv);
 }
-
