@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 12:23:49 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 14:00:40 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	set_palette(t_fractol *f, int *colors, int n)
 		color_pos++;
 		i += j;
 	}
-	f->palette[MAX_ITERATIONS -1] = 0;
+	f->palette[MAX_ITERATIONS - 1] = 0;
 }
 
 void	set_color_range(t_fractol *f, int is_color)
