@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/22 12:03:33 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/22 12:19:58 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ LIBFT		= 	$(LIBFT_PATH)$(LIBFT_NAME)
 
 # Includes
 INC			=	-I ./includes/\
-				-I ./libft/
+				-I ./libft/\
+				-Imlx
 
 # Sources
 SRC_DIR 	= 	src/
