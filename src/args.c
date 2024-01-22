@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   args.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+        */
+/*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/16 09:56:51 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/18 13:09:04 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/22 11:58:36 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,9 @@ static void	parse_set(t_fractol *f, char **str)
 {
 	char	set;
 
+	set = str[1][0];
 	if (str[1][0] != 'M' && str[1][0] != 'J' && str[1][0] != 'T')
 		print_and_exit(1);
-	else
-		set = str[1][0];
 	if (set == 'M')
 		f->set = MANDELBROT;
 	else if (set == 'J')
