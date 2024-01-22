@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/22 14:30:31 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/22 17:04:39 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,15 @@ LIBFT_PATH	= 	libft/
 LIBFT_NAME	= 	libft.a
 LIBFT		= 	$(LIBFT_PATH)$(LIBFT_NAME)
 
+# Mlx
+MLX_PATH	= 	mlx/
+MLX_NAME	= 	libmlx.a
+MLX			= 	$(MLX_PATH)$(MLX_NAME)
+
 # Includes
 INC			=	-I ./includes/\
 				-I ./libft/\
-				-Imlx
+				-I ./mlx
 
 # Sources
 SRC_DIR 	= 	src/
@@ -54,7 +59,7 @@ MAKEFLAGS 	+=	--no-print-directory
 
 ###
 
-all: $(LIBFT) $(NAME)
+all: $(MLX) $(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
@@ -66,8 +71,12 @@ $(LIBFT):
 	@echo "Making libft..."
 	@make -sC $(LIBFT_PATH)
 
+$(MLX):
+	@echo "Making mlx..."
+	@make -sC $(MLX_PATH)
+
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(INC) -lmlx -framework OpenGL -framework AppKit
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(INC) -lmlx -framework OpenGL -framework AppKit
 	@echo "$(GREEN)fractol compiled!$(DEF_COLOR)"
 
 libft:
@@ -76,6 +85,7 @@ libft:
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_PATH)
+	@make clean -C $(MLX_PATH)
 	@echo "$(BLUE)fractol object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
