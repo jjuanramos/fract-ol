@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: juramos <juramos@student.42madrid.com>     +#+  +:+       +#+         #
+#    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/16 12:06:38 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/22 10:39:19 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,9 +18,9 @@ CC 			= 	gcc
 CFLAGS 		= 	-Wall -Werror -Wextra
 
 # MiniLibX
-MLX_PATH	= 	minilibx-linux/
-MLX_NAME	= 	libmlx.a
-MLX			= 	$(MLX_PATH)$(MLX_NAME)
+# MLX_PATH	= 	minilibx-linux/
+# MLX_NAME	= 	libmlx.a
+# MLX			= 	$(MLX_PATH)$(MLX_NAME)
 
 # Libft
 LIBFT_PATH	= 	libft/
@@ -30,7 +30,7 @@ LIBFT		= 	$(LIBFT_PATH)$(LIBFT_NAME)
 # Includes
 INC			=	-I ./includes/\
 				-I ./libft/\
-				-I ./minilibx-linux/
+				-Imlx
 
 # Sources
 SRC_DIR 	= 	src/
@@ -59,7 +59,7 @@ MAKEFLAGS 	+=	--no-print-directory
 
 ###
 
-all: $(MLX) $(LIBFT) $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
@@ -67,16 +67,16 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 $(OBJF):
 	@mkdir -p $(OBJ_DIR)
 
-$(MLX):
-	@echo "Making MiniLibX..."
-	@make -sC $(MLX_PATH)
+# $(MLX):
+# 	@echo "Making MiniLibX..."
+# 	@make -sC $(MLX_PATH)
 
 $(LIBFT):
 	@echo "Making libft..."
 	@make -sC $(LIBFT_PATH)
 
 $(NAME): $(OBJ)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) $(LIBFT) $(INC) -lXext -lX11 -lm
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT) $(INC) -Lmlx -lmlx -framework OpenGL -framework AppKit
 	@echo "$(GREEN)fractol compiled!$(DEF_COLOR)"
 
 libft:
@@ -85,7 +85,6 @@ libft:
 clean:
 	@rm -rf $(OBJ_DIR)
 	@make clean -C $(LIBFT_PATH)
-	@make clean -C $(MLX_PATH)
 	@echo "$(BLUE)fractol object files cleaned!$(DEF_COLOR)"
 
 fclean: clean
