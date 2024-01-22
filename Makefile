@@ -6,7 +6,7 @@
 #    By: juramos <juramos@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/15 16:43:25 by juramos           #+#    #+#              #
-#    Updated: 2024/01/22 12:19:58 by juramos          ###   ########.fr        #
+#    Updated: 2024/01/22 14:30:31 by juramos          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ MAKEFLAGS 	+=	--no-print-directory
 
 ###
 
-all: $(MLX) $(LIBFT) $(NAME)
+all: $(LIBFT) $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c | $(OBJF)
 	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
