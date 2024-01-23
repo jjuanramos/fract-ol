@@ -6,7 +6,7 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 12:40:31 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 14:00:40 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/23 11:18:28 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,19 +25,23 @@
 */
 int	interpolate(int color1, int color2, double fraction)
 {
-	int	start_rgb[3];
-	int	end_rgb[3];
+	int	start_rgb[4];
+	int	end_rgb[4];
 
-	start_rgb[0] = ((color1 >> 16) & 0xFF);
-	start_rgb[1] = ((color1 >> 8) & 0xFF);
-	start_rgb[2] = ((color1 >> 0) & 0xFF);
-	end_rgb[0] = ((color2 >> 16) & 0xFF);
-	end_rgb[1] = ((color2 >> 8) & 0xFF);
-	end_rgb[2] = ((color2 >> 0) & 0xFF);
+	start_rgb[0] = (color1 >> 24) & 0xFF;
+	start_rgb[1] = (color1 >> 16) & 0xFF;
+	start_rgb[2] = (color1 >> 8) & 0xFF;
+	start_rgb[3] = color1 & 0xFF;
+	end_rgb[0] = (color2 >> 24) & 0xFF;
+	end_rgb[1] = (color2 >> 16) & 0xFF;
+	end_rgb[2] = (color2 >> 8) & 0xFF;
+	end_rgb[3] = color2 & 0xFF;
 	start_rgb[0] = (end_rgb[0] - start_rgb[0]) * fraction + start_rgb[0];
 	start_rgb[1] = (end_rgb[1] - start_rgb[1]) * fraction + start_rgb[1];
 	start_rgb[2] = (end_rgb[2] - start_rgb[2]) * fraction + start_rgb[2];
-	return (0xFF << 24 | start_rgb[0] << 16 | start_rgb[1] << 8 | start_rgb[2]);
+	start_rgb[3] = (end_rgb[3] - start_rgb[3]) * fraction + start_rgb[3];
+	return (start_rgb[0] << 24 | start_rgb[1] << 16
+		| start_rgb[2] << 8 | start_rgb[3]);
 }
 
 /* set_palette:
