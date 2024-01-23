@@ -6,16 +6,22 @@
 /*   By: juramos <juramos@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:10:40 by juramos           #+#    #+#             */
-/*   Updated: 2024/01/22 16:56:50 by juramos          ###   ########.fr       */
+/*   Updated: 2024/01/23 16:05:37 by juramos          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+void	leaks(void)
+{
+	system("leaks fractol");
+}
+
 int	main(int argc, char **argv)
 {
 	t_fractol	f;
 
+	atexit(leaks);
 	if (argc < 2)
 	{
 		print_controls();
